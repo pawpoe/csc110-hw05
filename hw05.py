@@ -1,28 +1,62 @@
 """
-Name: (put your name here)
-Peers: (add any collaborators)
-References: (anything you checked to solve this)
+Name: Paw Poe
+Peers: N/A
+References: Homework 5 Instructions
 """
 
 def get_letter():
-    """ Add your own Docstring """
-    # remove the default return and add your code
-    return ""
+    """ Asks user for a single uppercase letter with the valid options being A,B, and C.
+    Can only be one of these three letters and can only be a single letter otherwise
+    an error message will appear."""
+    
+        
+    while True:
+        letter = input("Give an single uppercase letter: ")
+        
+        if len(letter) != 1:
+            print("Error: it needs to be a single character.")
+            continue
+        if letter not in("A", "B", "C"):
+            print("Error: You provided the wrong character." )
+            continue
+        return letter
 
 def get_digit():
-    """ Add your own Docstring """
-    # remove the default return and add your code
-    return 0
+    """ Asks user for a single digit number with the valid options being 1, 2, and 3.
+    Can only be one of these three numbers if not an error will appear."""
+    
+    while True:
+        digit = input("Give an single number character: ")
+        
+        if not digit.isdigit():
+            print("Error: your input should be only digits.")
+            continue
+        if digit not in("1", "2", "3"):
+            print("Error: a single digit needs to be in [1,3].")
+            continue
+        return digit
 
 
 def check_pattern(letter, digit, lst):
-    """ Add your own Docstring """
-    # remove the default pass and add your code
-    pass
+    """Checks if any of the words inside the list contain the letter and number (in that order)
+    and prints any that do contain them. """
+    
+    for word in lst:
+        found = False
+        
+        for i in range(len(word)):
+            if word[i] == letter:
+                for j in range(i + 1, len(word)):
+                    if word[j]== digit:
+                        found = True
+
+        
+        if found:
+            print(word, end=" ")
+    
+    print()
 
 
-#  The function main is INCOMPLETE, you must finish it
-# before you submit
 def main ():
     """ gets a letter-num pair and searches inside a list for matches"""
 
@@ -32,7 +66,19 @@ def main ():
     "B@2@", "@@C1", "1B@", "A@@2", "@A3@", "@1@A", "2AA@",
     "1B1B", "333B", "1@CC", "3@@C", "333C"]
 
-    # TODO: Add your calls to get_letter, get_digit, and check_pattern
+    while True:
+        
+        letter = get_letter()
+        
+        digit = get_digit()
+        
+        check_pattern(letter, digit, st_list)
+        
+        again = input("Try Again? (y/n): ")
+        
+        if again != "y":
+            break
+        
     # Inside a loop so that:
     #     After printing the results, a prompt appears requiring an input
     #          with the text: "Try Again? (y/n): "
