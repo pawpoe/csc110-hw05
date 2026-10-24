@@ -41,16 +41,17 @@ def check_pattern(letter, digit, lst):
     """Checks if any of the words inside the list contain the letter and number (in that order)
     and prints any that do contain them. """
     
+    print("Strings with the pattern: ")
+    
     for word in lst:
         found = False
         
         for i in range(len(word)):
             if word[i] == letter:
                 for j in range(i + 1, len(word)):
-                    if word[j]== digit:
+                    if word[j] == digit:
                         found = True
 
-        
         if found:
             print(word, end=" ")
     
